@@ -12,4 +12,14 @@ router.get('/', function (req, res, next) {
       title: 'Generator-Express MVC',
       articles: articles
     });
-});
+})
+
+router.get('/test', function (req, res, next) {
+  var articles = [new Article(), new Article()];
+    res.render('index', {
+    	layout: 'new',
+      title: 'Generator-Express MVC',
+      articles: articles
+    });
+})
+;

@@ -7,20 +7,20 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var compress = require('compression');
 var methodOverride = require('method-override');
-var exphbs  = require('express-handlebars');
+var hbs  = require('express-hbs');
 
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
   app.locals.ENV_DEVELOPMENT = env == 'development';
   
-  app.engine('handlebars', exphbs({
+  app.engine('hbs', hbs.express4({
     layoutsDir: config.root + '/app/views/layouts/',
     defaultLayout: 'main',
     partialsDir: [config.root + '/app/views/partials/']
   }));
   app.set('views', config.root + '/app/views');
-  app.set('view engine', 'handlebars');
+  app.set('view engine', 'hbs');
 
   // app.use(favicon(config.root + '/public/img/favicon.ico'));
   app.use(logger('dev'));
