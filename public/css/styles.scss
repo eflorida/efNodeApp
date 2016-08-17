@@ -1,0 +1,637 @@
+@import "normalize.css",
+"demo.css",
+"menu_topside.css";
+
+// Variables
+// -----------------------------------------------------------------------------
+
+$baseWhite: #ecf0f1;
+$baseGrey: #bdc3c7;
+$darkGrey: #7f8c8d;
+$brightBlue: #2980b9;
+$baseGreen: #16a085;
+$baseYellow: #f39c12;
+$baseRed: #c94e50;
+$baseBlue: #2c3e50;
+$menuBlue: #373a47;
+
+$maxContentWidth: 1200px;
+$sectionPadding: 184px;
+
+// Mixins
+// -----------------------------------------------------------------------------
+
+// border-serrated - a zig zag triangle border with linear gradient
+@mixin border-top-serrated($size, $color-outer) {
+  & {
+    position: relative;
+    padding-top: ($sectionPadding * 0.5);
+  }
+  &:before {
+    top: 0px;
+    background: linear-gradient(-135deg, $color-outer $size / 2, transparent 0), linear-gradient(135deg, $color-outer $size / 2, transparent 0);
+    background-position: left top;
+    @include border-serrated-helper($size, $color-outer);
+  }
+}
+
+@mixin border-serrated-helper($size, $color-outer) {
+  content: " ";
+  display: block;
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: $size;
+  background-repeat: repeat-x;
+  background-size: $size $size;
+}
+
+// Base Styles
+// -----------------------------------------------------------------------------
+
+body {
+  background: $baseWhite;
+  color: $baseBlue;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Oswald', 'Raleway', Arial, sans-serif;
+  }
+  p, div, ul, li, span {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: $baseRed;
+  background: #ffffff;
+}
+
+::selection {
+  color: $baseRed;
+  background: #ffffff;
+}
+
+// Home Page Styles
+// -----------------------------------------------------------------------------
+
+#open-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+.profile span {
+  color: $baseYellow;
+}
+
+.content {
+  background: $baseWhite;
+  color: $baseBlue;
+
+  a {
+    color: $baseGreen;
+    &:hover, &:focus {
+      color: ($baseGreen + #222);
+      outline: none;
+    }
+  }
+}
+
+.icon-list .fa {
+  width: 42px;
+  height: 42px;
+  margin: auto;
+  padding-top: 10px;
+  background: $baseBlue;
+  text-align: center;
+}
+
+nav .icon-list .fa {
+  background: ($menuBlue - #060606);
+  &:hover {
+    background: ($menuBlue - #111);
+  }
+}
+
+header {
+  background: $baseWhite;
+  h1 {
+    text-align: center;
+    padding-top: 6%;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 3.8rem;
+    line-height: 4.2rem;
+    font-weight: 400;
+    span {
+      font-family: 'Source Sans Pro', Arial, sans-serif;
+      font-size: 2.8rem;
+      font-weight: 100;
+      color: ($baseBlue + #333);
+      display: block;
+    }
+  }
+  h2 {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    text-align: center;
+    padding-top: 44px;
+    margin-top: 92px;
+    font-size: 3.2rem;
+    line-height: 2.8rem;
+    font-weight: 300;
+    color: $baseGreen;
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+}
+
+.contentWrapper {
+  max-width: $maxContentWidth;
+  margin: auto;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 32px solid transparent;
+  border-right: 32px solid transparent;
+  border-top: 28px solid $baseWhite;
+  margin: auto;
+  margin-top: -$sectionPadding;
+  padding-bottom: ($sectionPadding - 32px);
+}
+
+#descriptionWrapper {
+  height: 380px;
+  overflow: hidden;
+}
+
+#skills {
+  background: $baseGreen;
+  padding-top: $sectionPadding;
+  padding-bottom: $sectionPadding;
+  ul {
+    width: 33.333%;
+    padding: 12px;
+    float: left;
+    li {
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 1.8rem;
+      font-weight: 400;
+      padding-left: 5%;
+      h3 {
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+        font-weight: 600;
+      }
+      img {
+        width: 40%;
+      }
+    }
+  }
+}
+
+#ionicApp {
+  background: $baseGrey;
+  padding-top: 0;
+  padding-bottom: 82px;
+  ul {
+    width: 50%;
+    padding: 94px 12px 12px 12px;
+    float: left;
+    li {
+      text-align: left;
+      font-size: 1.4rem;
+      line-height: 2.4rem;
+      font-weight: 600;
+      padding-left: 5%;
+      h3 {
+        font-family: 'Source Sans Pro', Arial, sans-serif;
+        font-size: 2.8rem;
+        line-height: 2.8rem;
+        font-weight: 100;
+        margin: 0 auto 12px auto;
+      }
+      img {
+        display: inline;
+        margin: 4px 0;
+        height: 64px;
+      }
+    }
+  }
+  .imageWrapper {
+    width: 50%;
+    float: left;
+    img {
+      max-height: 552px;
+      max-width: 100%;
+      margin-top: -48px;
+    }
+  }
+}
+
+#experience {
+  background: $brightBlue;
+  padding-top: $sectionPadding;
+  padding-bottom: $sectionPadding;
+  ul {
+    width: 33.333%;
+    padding: 12px;
+    float: left;
+    li {
+      text-align: center;
+      font-size: 1.2rem;
+      line-height: 1.8rem;
+      font-weight: 400;
+      padding-left: 5%;
+      color: #fff;
+      h3 {
+        font-size: 1.8rem;
+        color: #fff;
+        line-height: 1.8rem;
+        font-weight: 600;
+      }
+      img {
+        width: 40%;
+      }
+    }
+  }
+}
+
+#personal {
+  @include border-top-serrated(16px, $brightBlue);
+  background: $baseWhite;
+  color: $darkGrey;
+  padding-top: ($sectionPadding * 0.5);
+  padding-bottom: ($sectionPadding * 0.5);
+  ul {
+    padding-top: 48px;
+    width: 33%;
+    float: left;
+  }
+  i {
+    font-size: 3.2rem;
+    line-height: 2.8rem;
+    color: $brightBlue;
+  }
+  h3 {
+    font-size: 2.0rem;
+    line-height: 2.8rem;
+    margin: 1.0rem auto;
+    color: $brightBlue;
+  }
+  p {
+    text-align: left;
+    color: $darkGrey;
+  }
+}
+
+footer {
+  background: ($darkGrey - #555);
+  color: ($baseBlue + #333);
+  padding: 6px 0;
+  p {
+    text-align: center;
+  }
+}
+
+// Portfolio Page Styles
+// -----------------------------------------------------------------------------
+#portfolio {
+  header {
+    h1 {
+      font-size: 1.7rem;
+      float: right;
+      text-align: right;
+      padding-top: 12px;
+      margin-right: 24px;
+      color: $baseGrey;
+      border-bottom: 1px solid $baseGrey;
+      line-height: 2.2rem;
+      span {
+        display: inline;
+        font-size: 1.7rem;
+        color: $baseGrey;
+      }
+    }
+    h5 {
+      clear: both;
+      max-width: 680px;
+      margin: 48px auto 12px auto;
+      padding: 12px;
+      display: block;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+}
+
+#portSamples,
+#resumeSamples {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  //align-items: flex-start;
+  //align-content: center;
+  max-width: $maxContentWidth;
+  margin: 0 auto;
+
+  h4 {
+    color: $baseBlue;
+    width: 100%;
+    padding: 12px 20%;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 100;
+    font-size: 1.2rem;
+    display: block;
+    margin: auto;
+  }
+
+  article {
+    cursor: pointer;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    //float: left;
+    flex-grow: 1;
+    flex-basis: 0;
+    background: white;
+    margin: 1.5%;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    min-width: 280px;
+    &:hover {
+      -webkit-transform: scale(1.02);
+      -moz-transform: scale(1.02);
+      -ms-transform: scale(1.02);
+      -o-transform: scale(1.02);
+      transform: scale(1.02);
+    }
+    &.double {
+      flex-grow: 2;
+      flex-basis: 60%;
+    }
+    .imgWrapper {
+      width: 100%;
+      height: 228px;
+      overflow: hidden;
+      -webkit-box-shadow: inset 0px -88px 68px -32px rgba(0, 0, 0, 0.0);
+      -moz-box-shadow: inset 0px -88px 68px -32px rgba(0, 0, 0, 0.0);
+      box-shadow: inset 0px -88px 68px -32px rgba(0, 0, 0, 0.0);
+      //z-index: 100;
+      border-bottom: 1px solid #999;
+      margin: auto;
+    }
+    img {
+      width: 100%;
+      min-height: 228px;
+      margin: 0 auto;
+      //z-index: -10;
+      position: relative;
+      border-radius: 6px;
+    }
+    .contentWrapper {
+      z-index: 100;
+      padding: 12px;
+    }
+    h3 {
+      margin: 0 auto;
+      color: $baseBlue;
+      font-size: 1.4rem;
+    }
+    h5 {
+      margin: 0 auto;
+      color: $darkGrey;
+      font-size: 1.1rem;
+      padding: 6px 0 0 0;
+    }
+    p {
+      margin: 0 auto;
+      color: $darkGrey;
+      font-size: 1.0rem;
+      padding-top: 8px;
+      margin-top: 8px;
+      border-top: 1px solid #dedede;
+    }
+  }
+}
+
+#resumeSamples {
+  aside {
+    h5 {
+      max-width: 680px;
+      display: block;
+      text-align: left;
+    }
+    h6 {
+      display: block;
+      text-align: left;
+      margin: 4px 0;
+    }
+    p {
+      display: block;
+      text-align: left;
+      margin: 4px 0;
+      padding: 0;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.overlay {
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 50% auto;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  z-index: -100;
+  background: #ffffff;
+  color: #ffffff;
+  transition: all .4s ease-in-out;
+  img {
+    max-width: 72%;
+    max-height: 92%;
+    float: left;
+    margin: 4%;
+    border-radius: 8px;
+    padding: 0;
+    opacity: 0;
+    display: none;
+    transition: opacity 0.5s ease;
+    &.active {
+      opacity: 1;
+      display: block;
+    }
+  }
+  h3 {
+    color: $baseRed;
+  }
+  h6 {
+    margin: 4px 0;
+    color: $baseYellow;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 0.9rem;
+  }
+  .portDetails {
+    width: 20%;
+    float: right;
+    margin: 140px 0 0 0;
+    padding: 0 12px 0 0;
+  }
+  .overlay-close {
+    width: 64px;
+    height: 64px;
+    transition: opacity ease 0.5s;
+    &:hover {
+      opacity: 0.4;
+    }
+  }
+}
+
+.overlay.open {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1400;
+  background: $baseBlue;
+  color: $baseGrey;
+  img {
+    //-webkit-box-shadow: 8px 8px 12px 0px rgba(0, 0, 0, 0.66);
+    //-moz-box-shadow: 8px 8px 12px 0px rgba(0, 0, 0, 0.66);
+    //box-shadow: 8px 8px 12px 0px rgba(0, 0, 0, 0.66);
+    //border-radius: 8px;
+    //margin: 4% 2% 4% 4%;
+  }
+}
+
+// Media Query Styles
+// -----------------------------------------------------------------------------
+@media (max-width: 1000px) {
+  .overlay .portDetails {
+    float: none;
+    clear: both;
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 960px) {
+  #ionicApp {
+    img {
+      padding-top: 10%;
+    }
+  }
+}
+
+@media (max-width: 840px) {
+  header h1 {
+    padding-top: 20%;
+  }
+  #descriptionWrapper {
+    hieght: 160px;
+  }
+  #personal ul {
+    width: 100%;
+    padding-left: 0;
+    li {
+      max-width: 80%;
+      margin: auto;
+    }
+    p {
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  #ionicApp {
+    img {
+      padding-top: 25%;
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  #skills .contentWrapper ul,
+  #experience .contentWrapper ul {
+    width: 80%;
+    margin: 24px 10%;
+    h3 {
+      margin: 8px auto;
+    }
+  }
+  #ionicApp {
+    .imageWrapper {
+      width: 100%;
+    }
+    img {
+      padding-top: 0;
+    }
+    ul {
+      width: 100%;
+      padding: 0;
+    }
+  }
+  #portSamples h4,
+  #resumeSamples h4 {
+    padding: 12px 10%;
+  }
+}
+
+@media (max-width: 500px) {
+  #portfolio header h1 span {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  #skills, #ionicApp, #personal, #experience {
+    padding-top: 68px;
+    padding-bottom: 68px;
+  }
+  .arrow-down {
+    margin-top: -68px;
+  }
+  #personal ul {
+    padding-top: 0;
+  }
+  #skills .contentWrapper,
+  #experience .contentWrapper,
+  #personal .contentWrapper {
+    ul {
+      width: 96%;
+      margin: 18px 2%;
+      border-top: 1px solid $baseBlue;
+    }
+    img {
+      float: left;
+    }
+    i.fa {
+      display: none;
+    }
+  }
+  .overlay .overlay-close {
+    width: 48px;
+    height: 48px;
+  }
+}

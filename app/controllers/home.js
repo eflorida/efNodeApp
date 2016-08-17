@@ -1,6 +1,19 @@
+// -- Require statements
 var express = require('express'),
-  router = express.Router(),
-  Article = require('../models/article');
+    router = express.Router(),
+    // throng   = require("throng"),
+    Article = require('../models/article');
+
+// // -- Configure settings from environment config
+// var PORT  = process.env.PORT || 3000;
+// var WORKERS = process.env.WEB_CONCURRENCY || 1;
+
+// // -- define throng settings - a worker manager for clustered app
+// // -- https://github.com/hunterloftis/throng
+// throng(start, {
+//     workers: WORKERS,
+//     lifetime: Infinity
+// });
 
 module.exports = function (app) {
   app.use('/', router);
@@ -9,16 +22,16 @@ module.exports = function (app) {
 router.get('/', function (req, res, next) {
   var articles = [new Article(), new Article()];
     res.render('index', {
-      title: 'Generator-Express MVC',
+      title: 'Developer',
       articles: articles
     });
 })
 
-router.get('/test', function (req, res, next) {
+router.get('/design', function (req, res, next) {
   var articles = [new Article(), new Article()];
     res.render('index', {
     	layout: 'new',
-      title: 'Generator-Express MVC',
+      title: 'Designer',
       articles: articles
     });
 })

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en" class="no-js">
 
 	<head>
@@ -6,7 +7,7 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	    <title>{{title}}</title>
+	    <title>Erik Florida | {{title}}</title>
 
 	    <meta name="description"
 	          content="I am an user experience designer. I am a problem solver and perpetual seeker of opportunity."/>
@@ -20,7 +21,6 @@
 	    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700' rel='stylesheet' type='text/css'>
 	    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
 
-	    <link rel="stylesheet" href="/css/style.css">
 		{{#if ENV_DEVELOPMENT}}
 			<script src="http://localhost:35729/livereload.js"></script>
 		{{/if}}
@@ -40,5 +40,8 @@
 
 		</div>
 
+		{{> postRenderScripts}}
+
 	</body>
+
 </html>

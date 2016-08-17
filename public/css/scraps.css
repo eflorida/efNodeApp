@@ -1,0 +1,64 @@
+
+/*==========  Variables  ==========*/
+
+$pg-bg:             #f1f8fc;
+$rr-bg:             $buttonCTA;
+$rr-bg-hover:       darken($rr-bg, 10%);
+
+$rr-height:         200px;
+$rr-slant:          90px;
+$rr-gutter:         1%;
+$rr-width:          50%;
+
+
+
+// Hover styles
+   .slant:hover { background: $rr-bg-hover; }
+.angle-right:hover:after { border-left-color: $rr-bg-hover; }
+.angle-left:hover:before { border-right-color: $rr-bg-hover; }
+
+// Construct the rectangles
+.slant {
+  position: relative;
+  height: $rr-height;
+  background: $rr-bg;
+&.angle-right {
+   z-index: 1;
+   float: left;
+   width: $rr-width + 5%; // + 5% adjustment for slant offset
+ }
+&.angle-left {
+   z-index: 2;
+   float: right;
+   width: $rr-width - $rr-gutter - 5%; // - 5% adjustment for slant offset
+ }
+}
+// Add slanted edges
+   .slant:after,
+   .slant:before {
+     content: "";
+     position: absolute;
+     top: 0;
+     width: 0;
+     height: 0;
+   }
+.angle-right:after {
+  right: 0;
+  border-left: $rr-slant solid $rr-bg;
+  border-bottom: $rr-height solid $pg-bg;
+}
+.angle-left:before {
+  left: -$rr-slant;
+  border-right: $rr-slant solid $rr-bg;
+  border-top: $rr-height solid rgba(0, 0, 0, 0); // overlaps .rr-left
+}
+
+// Add padding around inner content
+   .angle-right > div {
+     margin-right: $rr-slant;
+     margin-left: $rr-slant/2;
+   }
+.angle-left > div {
+  margin-right: $rr-slant/2;
+  margin-left: $rr-slant/4;
+}
